@@ -1,0 +1,22 @@
+syntax="proto3";
+
+message File {
+    string name=1;
+    bytes contents=2;
+}
+message Directory{
+    string name=1;
+    repeated Entity contents=2;
+}
+
+message Entity {
+    oneof entity {
+        Directory directory = 1;
+        File file = 2;
+    }
+ }
+
+message Top{
+    repeated uint64 tree=1;
+    bytes ent=2;
+}
